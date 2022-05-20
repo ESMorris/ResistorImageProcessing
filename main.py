@@ -45,10 +45,22 @@ class Resistor:
         self.numOfBands = len(list)
         self.list = list
 
-
     def printEachBandInputted(self):
         r, t = self.calculateResistance()
         print(r, t)
+        r = self.updateFinalValue(r)
+        print(r, t)
+    
+    def updateFinalValue(self, r):
+        if r >= 1_000_000:
+            r = r // 1_000_000
+            return str(r) + "M"
+        elif r >= 1_000:
+            r = r // 1_000
+            return str(r) + "k"
+        else:
+            return r
+
 
     def calculateResistance(self):
         if self.checkForCorrectBand():
@@ -71,7 +83,7 @@ class Resistor:
 
 
 def main():
-    input = ["brown", "green", "red", "gold"]
+    input = ["brown", "green", "yellow", "gold"]
     resistor1 = Resistor(input)
     resistor1.printEachBandInputted()
 
