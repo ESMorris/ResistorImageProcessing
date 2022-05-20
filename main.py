@@ -81,8 +81,12 @@ class Resistor:
 
 
 def main():
-    input = ["brown", "green", "yellow", "gold"]
-    resistor1 = Resistor(input)
+    band_list = []
+    for i in range(1, 5):
+        band = input(f"Please enter a band{i}: ")
+        band_list.append(band)
+    print()
+    resistor1 = Resistor(band_list)
     resistor1.printFinalResistance()
 
 
