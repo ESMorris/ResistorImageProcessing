@@ -1,4 +1,43 @@
-from socket import SO_ERROR
+class Band:
+    digit = {
+        "black" : 0,
+        "brown" : 1,
+        "red" : 2,
+        "orange" : 3,
+        "yellow" : 4,
+        "green" : 5,
+        "blue" : 6,
+        "violet" : 7,
+        "grey" : 8,
+        "white" : 9, 
+    }
+    multiplier = {
+        "black" : 1,
+        "brown" : 10,
+        "red" : 100,
+        "orange" : 1_000,
+        "yellow" : 10_000,
+        "green" : 100_000,
+        "blue" : 1_000_000,
+        "violet" : 10_000_000,
+        "grey" : 100_000_000,
+        "white" : 9,
+        "gold" : 0.1,
+        "silver" : 0.01
+    }
+    tolerance = {
+        "brown" : 1,
+        "red" : 2,
+        "green" : 0.5,
+        "blue" : 0.25,
+        "violet" : 0.10,
+        "grey" : 0.05,
+        "gold" : 5,
+        "silver" : 10
+    }
+
+    def justinCase():
+        pass
 
 
 class Resistor:
@@ -8,30 +47,33 @@ class Resistor:
 
 
     def printEachBandInputted(self):
-        for index, color in enumerate(self.list):
-            print(index, color)
+        r, t = self.calculateResistance()
+        print(r, t)
 
     def calculateResistance(self):
-        pass
-
-
-    def updateValue(self):
-        r, t = self.calculateResistance()
+        if self.checkForCorrectBand():
+            resistance = ((10 * Band.digit[self.list[0]]) + Band.digit[self.list[1]]) * Band.multiplier[self.list[2]]
+            tolerance = Band.tolerance[self.list[3]]
+            return resistance, tolerance
+        
+    def checkForCorrectBand(self):
+        if self.list[0] in Band.digit and self.list[1] in Band.digit and self.list[2] in Band.multiplier and self.list[3] in Band.tolerance:
+            return True
 
 
         
 
 
-
+# idea: use opencv and a webcam to recognise a resistor and their respective band colors
 
 
 
 
 
 def main():
-    input = ["brown", "black", "brown"]
+    input = ["brown", "green", "red", "gold"]
     resistor1 = Resistor(input)
-    resistor1.calculateResistance()
+    resistor1.printEachBandInputted()
 
 
 
