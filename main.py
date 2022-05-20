@@ -39,17 +39,15 @@ class Band:
     def justinCase():
         pass
 
-
 class Resistor:
     def __init__(self, list = None):
         self.numOfBands = len(list)
         self.list = list
 
-    def printEachBandInputted(self):
+    def printFinalResistance(self):
         r, t = self.calculateResistance()
-        print(r, t)
         r = self.updateFinalValue(r)
-        print(r, t)
+        print(f"{r}\u03A9 \u00B1{t}%")
     
     def updateFinalValue(self, r):
         if r >= 1_000_000:
@@ -85,7 +83,7 @@ class Resistor:
 def main():
     input = ["brown", "green", "yellow", "gold"]
     resistor1 = Resistor(input)
-    resistor1.printEachBandInputted()
+    resistor1.printFinalResistance()
 
 
 
