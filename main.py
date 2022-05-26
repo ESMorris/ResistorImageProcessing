@@ -1,3 +1,6 @@
+import numpy as np
+import cv2 as cv
+
 class Band:
     digit = {
         "black" : 0,
@@ -81,13 +84,8 @@ class Resistor:
 
 
 def main():
-    band_list = []
-    for i in range(1, 5):
-        band = input(f"Please enter a band{i}: ")
-        band_list.append(band)
-    print()
-    resistor1 = Resistor(band_list)
-    resistor1.printFinalResistance()
+    # implementing a testing image processing features
+    pass
 
 
 
